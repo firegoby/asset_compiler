@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension id="asset_compiler" status="released" xmlns="http://symphony-cms.com/schemas/extension/1.0">
+	<name>Asset Compiler</name>
+  <description>Concatenate &amp; minify Javascript &amp; CSS assets and update a XSLT Template with the newly compiled SHA1 tagged filename.</description>
+	<repo type="github">https://github.com/firegoby/asset_compiler</repo>
+	<types>
+		<type>Workflow</type>
+	</types>
+	<authors>
+		<author>
+			<name github="firegoby" symphony="firegoby" twitter="firegobyDesign">Chris Batchelor</name>
+			<website>http://firegoby.com</website>
+		</author>
+	</authors>
+	<releases>
+    <release version="1.0" date="2012-11-27" min="2.3" max="2.3">
+			- Initial release
+		</release>
+	</releases>
+</extension>

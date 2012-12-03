@@ -22,4 +22,7 @@
 			- Initial release
 		</release>
 	</releases>
+  <media>
+    <item type="image" url="http://firegoby.s3.amazonaws.com/media/asset-compiler.png">Preferences page settings</item>
+  </media>
 </extension>

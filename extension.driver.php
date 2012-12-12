@@ -137,11 +137,11 @@
         $context['settings'] = array('asset_compiler' => array('enabled_styles' => 'no', 'enabled_scripts' => 'no'));
       }
       // Disable enabled styles status if it has not been set to 'yes'
-      elseif(!isset($context['settings']['asset_compiler']['enabled_styles'])) {
+      if(!isset($context['settings']['asset_compiler']['enabled_styles'])) {
         $context['settings']['asset_compiler']['enabled_styles'] = 'no';
       }
       // Disable enabled scripts status if it has not been set to 'yes'
-      elseif(!isset($context['settings']['asset_compiler']['enabled_scripts'])) {
+      if(!isset($context['settings']['asset_compiler']['enabled_scripts'])) {
         $context['settings']['asset_compiler']['enabled_scripts'] = 'no';
       }
     }

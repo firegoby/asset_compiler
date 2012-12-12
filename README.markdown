@@ -2,7 +2,7 @@
 
 Symphony CMS extension to concatenate & minify Javascript & CSS assets and update Symphony's output with the newly compiled, SHA1-tagged, filename.
 
-- Version: 1.2
+- Version: 1.3
 - Date: 12th December 2012
 - Requirements: Symphony 2.3
 - Author: Chris Batchelor

@@ -115,7 +115,7 @@
       if (Symphony::Configuration()->get('enabled_styles', 'asset_compiler') == 'yes') {
         $style = Symphony::Configuration()->get('latest_style', 'asset_compiler');
         $styles_path = Symphony::Configuration()->get('styles_path', 'asset_compiler');
-        $link_tag = '<link rel="stylsheet" href="' . $styles_path . '/' . $style . '" />';
+        $link_tag = '<link rel="stylesheet" href="/' . $styles_path . '/' . $style . '" />';
         $html = preg_replace('/<link[^>]* data-compile=["\']true["\'][^>]*\/?>/i', '', $html);
         $html = preg_replace('/<\/head>/', $link_tag . '</head>', $html);
       }
@@ -123,7 +123,7 @@
       if (Symphony::Configuration()->get('enabled_scripts', 'asset_compiler') == 'yes') {
         $script = Symphony::Configuration()->get('latest_script', 'asset_compiler');
         $scripts_path = Symphony::Configuration()->get('scripts_path', 'asset_compiler');
-        $script_tag = '<script src="' . $scripts_path . '/' . $script . '"></script>';
+        $script_tag = '<script src="/' . $scripts_path . '/' . $script . '"></script>';
         $html = preg_replace('/<script[^>]* data-compile=["\']true["\'][^>]*\/?>(<\/script>)?/i', '', $html);
         $html = preg_replace('/<\/body>/', $script_tag . '</body>', $html);
       }

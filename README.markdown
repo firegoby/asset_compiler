@@ -2,8 +2,8 @@
 
 Symphony CMS extension to concatenate & minify Javascript & CSS assets and update Symphony's output with the newly compiled, SHA1-tagged, filename.
 
-- Version: 1.3
-- Date: 12th December 2012
+- Version: 1.4
+- Date: 5th February 2013
 - Requirements: Symphony 2.3
 - Author: Chris Batchelor
 
@@ -26,6 +26,10 @@ There are also a checkbox On/Off switches to control whether to serve the compil
 5. Tick one or both of ***Serve Compiled Javascript/Stylesheet Assets*** and click ***Save Changes***
 
 **Note:** the assets can be in any folder under the Symphony root, absolute paths for the domain (e.g. `/workspace/styles`) are trimmed of their leading `/` and appended to Symphony root prior to concatenation.
+
+## Updating Multiple Manifests
+
+Asset Compiler stores the latest compiled filenames in `manifest/config.php`. If you use Rowan Lewis' "[Dual Manifest Folders](http://nbsp.io/symphony-cms/using-git-and-symphony-cms)" setup you can check the `Advanced: Save compilation details to ALL manifest.*/config.php files` checkbox to ensure all your manifests are updated at the same time.
 
 ## Frequently Asked Questions
 

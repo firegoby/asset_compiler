@@ -12,7 +12,6 @@
       Symphony::Configuration()->set('latest_script', 'production-a1b2c3d4e5.min.js', 'asset_compiler');
       Symphony::Configuration()->set('latest_style', 'production-a1b2c3d4e5.min.css', 'asset_compiler');
       Symphony::Configuration()->set('closure_compression', 'WHITESPACE_ONLY', 'asset_compiler');
-      Symphony::Configuration()->set('update_all_manifests', 'no', 'asset_compiler');
       return Symphony::Configuration()->write();
     }
 
@@ -70,13 +69,6 @@
       $group->appendChild(new XMLElement('p', __("Enable to serve compiled assets (<em>concatenated, minified & SHA1 tagged</em>) from <code>" . $xslt_template_filename . "</code>"), array('class' => 'help')));
       $group->appendChild(new XMLElement('p', __("Simply add a <code>data-compile='true'</code> attribute to any <code>script</code> or <code>link</code> element in <code>" . $xslt_template_filename . "</code> to be compiled."), array('class' => 'help')));
       $group->appendChild(new XMLElement('p', __("<strong>Recommended Usage: </strong>Disable before compiling, then re-enable once assets successfully compiled."), array('class' => 'help')));
-
-      // Append all manifests on/off
-      $label = Widget::Label();
-      $input = Widget::Input('settings[asset_compiler][update_all_manifests]', 'yes', 'checkbox');
-      if(Symphony::Configuration()->get('update_all_manifests', 'asset_compiler') == 'yes') $input->setAttribute('checked', 'checked');
-      $label->setValue($input->generate() . ' ' . __('Advanced: Save compilation details to ALL manifest.*/config.php files'));
-      $group->appendChild($label);
 
       // create control frame
       $div = new XMLElement('div', NULL, array('id' => 'compile-actions', 'class' => 'label'));
@@ -151,10 +143,6 @@
       // Disable enabled scripts status if it has not been set to 'yes'
       if(!isset($context['settings']['asset_compiler']['enabled_scripts'])) {
         $context['settings']['asset_compiler']['enabled_scripts'] = 'no';
-      }
-      // Disable updating all manifests if not set to 'yes'
-      if(!isset($context['settings']['asset_compiler']['update_all_manifests'])) {
-        $context['settings']['asset_compiler']['update_all_manifests'] = 'no';
       }
     }
 
@@ -239,11 +227,6 @@
           $results .= 'Saved compiled ' . $type . ' to <strong>' . $new_filename . '</strong><br />';
           Symphony::Configuration()->set($config_entry, $new_filename, 'asset_compiler');
           Symphony::Configuration()->write();
-          if (Symphony::Configuration()->get('update_all_manifests', 'asset_compiler') == 'yes') {
-            foreach (glob("manifest.*/config.php") as $filename) {
-              Symphony::Configuration()->write($filename);
-            }
-          }
           $success = TRUE;
           // delete old asset if different
           if ($old_filename != $new_filename && file_exists($old_file)) {

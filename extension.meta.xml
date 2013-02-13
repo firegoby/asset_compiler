@@ -13,6 +13,9 @@
 		</author>
 	</authors>
 	<releases>
+    <release version="1.5" date="2013-02-12" min="2.3" max="2.3">
+			- Removed multiple manifests update option (v1.4) until critical bugs can be overcome
+		</release>
     <release version="1.4" date="2013-02-05" min="2.3" max="2.3">
 			- Added option to update multiple manifests with newly compiled filenames
 		</release>

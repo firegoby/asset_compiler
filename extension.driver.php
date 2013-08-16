@@ -12,7 +12,16 @@
       Symphony::Configuration()->set('latest_script', 'production-a1b2c3d4e5.min.js', 'asset_compiler');
       Symphony::Configuration()->set('latest_style', 'production-a1b2c3d4e5.min.css', 'asset_compiler');
       Symphony::Configuration()->set('closure_compression', 'WHITESPACE_ONLY', 'asset_compiler');
+      Symphony::Configuration()->set('multi_config', 'no', 'asset_compiler');
       return Symphony::Configuration()->write();
+    }
+
+
+    public function update($previous_version) {
+        if (version_compare($previous_version, '1.6', '<')) {
+            Symphony::Configuration()->set('multi_config', 'no', 'asset_compiler');
+            return Symphony::Configuration()->write();
+        }
     }
 
 
@@ -225,8 +234,18 @@
         // create new asset file
         } else if (file_put_contents($new_file, $compiled)) {
           $results .= 'Saved compiled ' . $type . ' to <strong>' . $new_filename . '</strong><br />';
-          Symphony::Configuration()->set($config_entry, $new_filename, 'asset_compiler');
-          Symphony::Configuration()->write();
+          if (Symphony::Configuration()->get('multi_config', 'asset_compiler') == 'yes') {
+            foreach (glob(DOCROOT . '/manifest.*/config.php') as $config_file) {
+                $config = file_get_contents($config_file);
+                $pattern = '/production-([a-z0-9]{10})\.min\.' . $extension . '/';
+                $new_filename = "production-" . $new_sha . ".min." . $extension;
+                $config = preg_replace($pattern, $new_filename, $config);
+                file_put_contents($config_file, $config);
+            }
+          } else {
+            Symphony::Configuration()->set($config_entry, $new_filename, 'asset_compiler');
+            Symphony::Configuration()->write();
+          }
           $success = TRUE;
           // delete old asset if different
           if ($old_filename != $new_filename && file_exists($old_file)) {

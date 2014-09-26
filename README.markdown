@@ -1,5 +1,7 @@
 # Asset Compiler
 
+**IMPORTANT: This extension has been deprecated.** If you're looking for a similar extension you can check out [Assets](https://github.com/iwyg/symphony_assetcompiler) by Thomas Appel (@iwyg). Alternatively you might want to investigate a Gulp-based build system that can streamline your complete build stage, many are available, I have one myself called [Pimms](http://github.com/firegoby/pimms). This repository will remain in place so that projects already referencing it don't suddenly have a null git remote.
+
 Symphony CMS extension to concatenate & minify Javascript & CSS assets and update Symphony's output with the newly compiled, SHA1-tagged, filename.
 
 - Version: 1.6

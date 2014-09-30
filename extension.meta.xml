@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<extension id="asset_compiler" status="released" xmlns="http://symphony-cms.com/schemas/extension/1.0">
+<extension id="asset_compiler" status="deprecated" xmlns="http://symphony-cms.com/schemas/extension/1.0">
 	<name>Asset Compiler</name>
-  <description>Concatenate &amp; minify Javascript &amp; CSS assets and update Symphony output with the newly compiled SHA1 tagged filename.</description>
+  <description>Concatenate &amp; minify Javascript &amp; CSS assets and update Symphony output with the newly compiled SHA1 tagged filename. NOTE: This extension has been deprecated.</description>
 	<repo type="github">https://github.com/firegoby/asset_compiler</repo>
 	<types>
 		<type>Workflow</type>
